@@ -48,23 +48,35 @@
                 aut magnam quibusdam reprehenderit aperiam nihil minus id voluptates vitae, error delectus dolores!
                 Error, minus mollitia.</p>
         </section>
+        <script src="js/registro.js"></script>
+        <script src="js/proceso.js"></script>
+        <script>
+            
 
+        </script>
         <section id="formulario">
 
             <form class="form-registro" action="" method="POST">
                 <h2 class="form-titulo">Crear una Cuenta</h2>
                 <div class="contenedor-imp">
-                    <input class="col-48" type="text" name="txtNombre" id="" placeholder="ingrese nombre">
-                    <input class="col-48" type="text" name="txtApellido" id="" placeholder="ingrese apellido">
-                    <input class="col-100" type="email" name="txtEmail" id="" placeholder="ingrese correo">
-                    <input class="col-48" type="text" name="txtUsuario" id="" placeholder="ingrese usuario">
-                    <input class="col-48" type="password" name="txtPass" id="" placeholder="ingrese password">
-                    <input class="col-100" type="text" name="txtFono" id="" placeholder="ingrese telefono">
-
-                    <input class="btn-enviar" type="submit" value="Registrar">
+                    <input class="col-48" type="text" name="txtNombre" id="txtNombre" placeholder="ingrese nombre">
+                    <input class="col-48" type="text" name="txtApellido" id="txtApellido" placeholder="ingrese apellido">
+                    <input class="col-100" type="email" name="txtEmail" id="txtEmail" placeholder="ingrese correo">
+                    <input class="col-48" type="text" name="txtUsuario" id="txtUsuario" placeholder="ingrese usuario">
+                    <input class="col-48" type="password" name="txtPass" id="txtPass" placeholder="ingrese password">
+                    <input class="col-48" type="text" name="txtFono" id="txtFono" placeholder="ingrese telefono">
+                    <input class="col-48" type="text" name="txtRut" id="txtRut" placeholder="ingrese rut">
+                    <input class="btn-enviar" type="button" onclick="grabar()" value="Registrar">
+                    <input class="btn-enviar" type="button" onclick="listar()" value="Leer">
+                    <input type="button" value="Hola" onclick="rut()">
                 </div>
             </form>
 
+        </section>
+        <section>
+            <div id="listado">
+
+            </div>
         </section>
 
     </main>
@@ -76,6 +88,7 @@
         </div>
     </footer>
 
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>
