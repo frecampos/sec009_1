@@ -1,10 +1,24 @@
 function hola() {
     alert('Hola mundo');
 }
-function rut() {
+
+function validarFormulario() {
+    var resp = validarRut();
+    if (resp==false) {
+        return false;
+    }
+    resp = validarFecha();
+    if (resp==false) {
+        return false;
+    }
+    return true;
+}
+
+function validarRut() {
     var rut= document.getElementById("txtRut").value;
     if (rut.length !=10 ) {
-        alert('largo de rut incorrecto');
+        //alert('largo de rut incorrecto');
+        Swal.fire('largo de rut incorrecto');
         return false;
     }
     var suma=0;
@@ -32,10 +46,49 @@ function rut() {
     //alert('DV:'+dv);
     var dv_usuario = rut.slice(-1).toUpperCase();
     if (dv != dv_usuario ) {
-        alert('rut incorrecto');
+        //alert('rut incorrecto');
+        Swal.fire('el rut es incorrecto');
         return false;
     }else{
-        alert('rut correcto');
+        //alert('rut correcto');
         return true;
     }
+}
+function validarFecha() {
+    var fechaUsuario = document.getElementById('txtFechaNaci').value;
+    var fechaSistema = new Date();
+    console.log('Fecha Usuario:'+fechaUsuario);
+    console.log('Fecha Sistema:'+fechaSistema);
+    ////////////////////////////////////////// 2021-04-01
+    var ano = fechaUsuario.slice(0,4); 
+    var mes = fechaUsuario.slice(5,7);
+    var dia = fechaUsuario.slice(8,10);
+    console.log('Año:'+ano+ ' Mes:'+mes+ ' Dia:'+dia);
+    var fechaNuevaUsuario = new Date(ano,(mes-1),dia);
+    console.log('Fecha Nueva:'+fechaNuevaUsuario);
+    /////////////////////////////////////////
+    if (fechaNuevaUsuario > fechaSistema) {
+        //alert('fecha de nacimiento incorrecta');
+        Swal.fire({
+            icon: 'error',
+            title: 'fecha de nacimiento',
+            text: 'selecciono una fecha mayor a la actual'
+          });
+        return false;
+    }
+    ///////////////////////////////////////////
+    var elDia = 24 * 60 * 60 * 1000; //transformar el dia en milisegundos
+    var dias = Math.trunc((fechaSistema.getTime()- fechaNuevaUsuario.getTime()) / elDia);
+    console.log('Dias:'+dias);
+    var anos = Math.trunc ( dias / 365);
+    if (anos < 18) {
+        //alert('eres menor de edad, tienes '+anos+' años de edad');
+        Swal.fire({
+            icon: 'error',
+            title: 'fecha de nacimiento',
+            text: 'eres menor de edad, tienes '+anos+' años de edad'
+          });
+        return false;
+    }
+    return true;
 }
