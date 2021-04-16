@@ -87,7 +87,7 @@ function validarFecha() {
             icon: 'error',
             title: 'fecha de nacimiento',
             text: 'eres menor de edad, tienes '+anos+' años de edad'
-          });
+        });
         return false;
     }
     return true;
